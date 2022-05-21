@@ -2,11 +2,11 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { Form, Formik } from "formik";
 
-import { AUTH_KEYS } from "../../utils/constants/auth";
-import { HomePageProps } from "../../utils/interfaces/home";
+import { AUTH_KEYS } from "../../utils/constants/auth-constants";
+import { HomePageProps } from "../../utils/interfaces/home-interfaces";
 import { Input } from "../shared";
-import { ROUTES } from "../../utils/constants/shared";
-import { CustomInputClassNames } from "../../utils/interfaces/shared";
+import { ROUTES } from "../../utils/constants/shared-constants";
+import { CustomInputClassNames } from "../../utils/interfaces/shared-interfaces";
 
 const AuthHero = ({ isLogin }: HomePageProps) => {
   const memoisedClassNames = useMemo<CustomInputClassNames>(

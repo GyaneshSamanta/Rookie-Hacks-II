@@ -1,6 +1,6 @@
 import type { GetStaticPropsResult, NextPage } from "next";
 
-import { ROUTES } from "../utils/constants/shared";
+import { ROUTES } from "../utils/constants/shared-constants";
 
 const HomePage: NextPage = () => {
   return <></>;

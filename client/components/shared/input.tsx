@@ -1,6 +1,6 @@
 import { Field } from "formik";
 
-import { CustomFieldTypes } from "../../utils/interfaces/shared";
+import { CustomFieldTypes } from "../../utils/interfaces/shared-interfaces";
 
 const Input = (props: CustomFieldTypes) => {
   switch (props.type) {
