@@ -19,3 +19,7 @@ input,
 textarea {
   @apply outline-none;
 }
+
+.font-small-caps {
+  font-variant-caps: small-caps;
+}
