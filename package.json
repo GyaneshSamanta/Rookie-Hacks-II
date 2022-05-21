@@ -1,0 +1,25 @@
+{
+  "name": "Rookie-Hacks-II",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:GyaneshSamanta/Rookie-Hacks-II.git",
+  "author": "Gita Alekhya Paul <54375111+gitaalekhyapaul@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@hashgraph/sdk": "^2.14.2",
+    "dotenv": "^16.0.1",
+    "inquirer": "^8.2.4",
+    "solc": "^0.8.14-fixed",
+    "ts-node": "^10.7.0",
+    "tsc": "^2.0.4",
+    "typescript": "^4.6.4"
+  },
+  "scripts": {
+    "build": "ts-node blockchain/src/index.ts",
+    "helpsol": "solcjs --help"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.1",
+    "@types/node": "^17.0.35"
+  }
+}
