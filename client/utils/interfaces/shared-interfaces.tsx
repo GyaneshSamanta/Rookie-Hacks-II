@@ -58,3 +58,9 @@ export type CustomFieldTypes =
   | CustomTextareaProps
   | CustomSelectProps
   | CustomRadioBoxProps;
+
+export interface ModalProps {
+  children?: React.ReactNode;
+  className?: string;
+  toggleModal: React.Dispatch<React.SetStateAction<boolean>>;
+}

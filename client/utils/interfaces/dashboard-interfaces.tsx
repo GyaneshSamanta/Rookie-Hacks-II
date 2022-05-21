@@ -1,9 +1,11 @@
+export interface TransactionType {
+  trans_ID: string;
+  amount: number;
+  name: string;
+}
+
 export interface AssociationType {
-  [association_id: string]: {
-    trans_ID: string;
-    amount: number;
-    name: string;
-  }[];
+  [association_id: string]: TransactionType[];
 }
 
 export interface DashboardPageProps {
