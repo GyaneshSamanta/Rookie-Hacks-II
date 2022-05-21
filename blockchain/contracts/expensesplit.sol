@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
 contract Splitwise{
       mapping(address => mapping (address => int32)) public debts;
