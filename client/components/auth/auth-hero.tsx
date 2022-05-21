@@ -8,7 +8,7 @@ import { Input } from "../shared";
 import { ROUTES } from "../../utils/constants/shared-constants";
 import { CustomInputClassNames } from "../../utils/interfaces/shared-interfaces";
 
-const AuthHero = ({ isLogin }: HomePageProps) => {
+const AuthHero: React.FC<HomePageProps> = ({ isLogin }) => {
   const memoisedClassNames = useMemo<CustomInputClassNames>(
     () => ({
       input: "border-b-2 focus:border-hedera-secondary transition-all",

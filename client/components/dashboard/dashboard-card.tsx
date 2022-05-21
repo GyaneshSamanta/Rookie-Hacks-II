@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { ParseAssociationID } from "../../utils/functions";
 import { DashboardCardProps } from "../../utils/interfaces/dashboard-interfaces";
 
-const DashboardCard = ({ association }: DashboardCardProps) => {
+const DashboardCard: React.FC<DashboardCardProps> = ({ association }) => {
   const [transactions] = Object.values(association);
 
   const usernames = useMemo(

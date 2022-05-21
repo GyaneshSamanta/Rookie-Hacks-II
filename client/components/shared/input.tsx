@@ -2,7 +2,7 @@ import { Field } from "formik";
 
 import { CustomFieldTypes } from "../../utils/interfaces/shared-interfaces";
 
-const Input = (props: CustomFieldTypes) => {
+const Input: React.FC<CustomFieldTypes> = (props) => {
   switch (props.type) {
     case "text":
     case "email":

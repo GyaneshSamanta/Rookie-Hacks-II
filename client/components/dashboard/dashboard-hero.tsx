@@ -1,7 +1,7 @@
 import { DashboardHeroProps } from "../../utils/interfaces/dashboard-interfaces";
 import { DashboardCard } from ".";
 
-const DashboardHero = ({ associations }: DashboardHeroProps) => {
+const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
   return (
     <section>
       <div className="bg-hedera-secondary text-white py-36 px-48">
@@ -15,7 +15,7 @@ const DashboardHero = ({ associations }: DashboardHeroProps) => {
         Nulla veniam irure commodo duis officia aliquip irure ea nostrud.
       </p>
 
-      <div className="grid grid-cols-3 w-10/12 mx-auto mt-20 justify-center items-start">
+      <div className="grid grid-cols-3 min-w-fit w-10/12 mx-auto mt-20 justify-center items-start">
         {associations.map((association) => (
           <DashboardCard
             key={Object.keys(association)[0]}
