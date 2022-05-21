@@ -7,7 +7,7 @@ With expense split apps gaining more and more popularity, we aimed to design an 
 On our web-application, a user can create a account to login to our web app. Once a user is logged in, he has the option to add expense, edit expense, settle up expenses or delete transactions. All of this is stored in logs so that a user is aware of deletions or edits made to a transaction. 
 
 ## How the WebApp Looks 🤜🔥🤛
-![Front-end](https://user-images.githubusercontent.com/75165587/168473355-4953b97c-8d15-4376-bb2a-2414830e1924.png)
+![Front-end]()
 
 ## How we built it 🔧
 
