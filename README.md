@@ -1,65 +1,52 @@
-# AhoyHacks 2022
-### Official submission to AhoyHacks 2022
-
-![AhoyHacks](Repository-Assests/Cover.png) 
+![Rookie-Hacks-II](Repository-Assests/Cover.png) 
 
 ## Inspiration💡
-The newly crowned Pirate King, Monkey D. Luffy has set sail in the world to conquer the 4 seas. He sails now towards the grand line to steal the one piece. For non pirates *(Hackers)* we need to find the safest route through the seas to get to our destination wwithout being attacked by their fearsome crew. 
-
-![onepiece](Repository-Assests/luffy.jpg)  
+With expense split apps gaining more and more popularity, we aimed to design an expense split web application that would use blockchain to store the data instead of centralised database.  
 
 ## What it does 🧭
-We designed an android app with the help of flutter. Once you open the app you are delightfully bought into the world of pirates with an awesome UI. Once in it, you can choose your starting destination and end destination and the map changes to show you the safest route possible to the given destination. 
+On our web-application, a user can create a account to login to our web app. Once a user is logged in, he has the option to add expense, edit expense, settle up expenses or delete transactions. All of this is stored in logs so that a user is aware of deletions or edits made to a transaction. 
 
-You will see the world map as per the specifications in the anime one piece, we call this place mapa da one piece. In the day and age where ferocious pirates rule the 4 seas, it is important for us hackers to find a way of travel that can take us to our destination without picking up fights with the mighty pirates.
-
-We designed our mapa da one piece using wonderdraft which is extremely easy o use for noob navigators and cartographers as ourselves,and maped out the world and worked on creating the safe route paths. 
-
-The generated map files were then projected to a globe to give the app an immersive experience that you can see here. You can view the rest of the globe to check other parts of the world. 
-
-Depending on the source and destination entered by the user, the globe changes and shows us the specific route.
-
-We analyzed the entire anime series to plot the seas where pirates are generally known to sail and put them up as a trivia section where you get more details on your journey. Google maps had petrol pumps as stops and we have Baratie, the sea restaurant. 
-
-
-## How the App Looks 🤜🔥🤛
-![Untitled design](https://user-images.githubusercontent.com/75165587/168473355-4953b97c-8d15-4376-bb2a-2414830e1924.png)
+## How the WebApp Looks 🤜🔥🤛
+![Front-end](https://user-images.githubusercontent.com/75165587/168473355-4953b97c-8d15-4376-bb2a-2414830e1924.png)
 
 ## How we built it 🔧
 
-Our solution, uses `map to globe` as a method to render our world map of the One Piece world. We built an app using flutter and dart language and made maps using wonderdraft.
+We were working on solidity and smart contracts for the first time for this hackathon. On the blockchain side, the creation of expenses (credit/debit) ; editing and deletion is handled. This was built using solidity. The smart contract is deployed on hedera (which we used for the first time as well). On the front end side of things, we built the web app using next.js and tailwind css. 
 
 ## Tech Stack 🔨
-1. Flutter
-2. Dart
-3. Map to Globe
-4. Wonderdraft
-5. Git
-6. GitHub
+1. Hedera
+2. Solidity
+3. Smart Contracts
+4. Next.js
+5. Tailwind CSS
+6. Node.js
 
 ## Challenges we ran into 🏃‍♂️
 
-1. `Map to Globe` was down for about 24 hours since the start of the hackathon, and looking for alternatives that could suffice our solution was a big challenge. 
+1. Learning about solidity and building a smart contract over the duration of the hackathon was really challenging as none of us had used it before.
+
+2. Integrating the front end app with the backend was difficult for us.
 
 ## Accomplishments that we're proud of 🏅
-1. We made the each and every map using wonderdraft
+1. Successfully built our first smart contract over the weekend. 
+2. Created a web-application along the theme of the hedera website. 
 
 ## What we learned 🧠
-1. Learnt wonderdraft 
-2. We desgined the map
-3. We added those customized maps onto the globe
+1. Solidity language
+2. Smart contracts
+3. Javascript
 
 ## What's next ⏭
- 1. For future additions we aim to dynamically show the positioning of pirate ships so that we hackers could safely sail away from them.
+ 1. We plan to extend this to a mobile application for easier access. 
 
 ## Collaborators 🤖
 
-Only developers.
+Only People with broken fingers due to membrane keyboards. 
 | Name      | GitHub Profile     |
 | :------------- | :----------: |
 |  Gyanesh Samanta   | [GitHub](https://www.github.com/gyanesh-samanta-123) |
-|  Eshaan Bhardwaj   | [GitHub](https://github.com/Eshaan-B) |
-|  Chetas Shree Madhusudhan   | [GitHub](https://github.com/ChetasShree) |
+|  Gita Alekhya Paul   | [GitHub]() |
+|  Yashvardhan Jagnani   | [GitHub]() |
 
 
 
