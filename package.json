@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "ts-node blockchain/src/index.ts",
-    "helpsol": "solcjs --help"
+    "deploy": "ts-node blockchain/src/build.ts",
+    "solchelp": "solcjs --help"
   },
   "devDependencies": {
     "@types/inquirer": "^8.2.1",
