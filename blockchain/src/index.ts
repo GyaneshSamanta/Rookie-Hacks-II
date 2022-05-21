@@ -17,9 +17,9 @@ const main = async () => {
     "solcjs",
     [
       "--bin",
-      `blockchain/contracts/${answers.contractname}`,
+      join(__dirname, "..", "contracts", answers.contractname),
       "--output-dir",
-      "blockchain/build",
+      join(__dirname, "..", "build"),
     ],
     {
       stdio: [process.stdin, process.stdout, process.stderr],
