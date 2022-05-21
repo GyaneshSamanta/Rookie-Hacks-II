@@ -7,6 +7,14 @@ export interface Validation {
   }[];
 }
 
+export interface CustomInputClassNames {
+  wrapper?: string;
+  input?: string;
+  description?: string;
+  label?: string;
+  option?: string;
+}
+
 interface CustomFieldProps extends Validation {
   name: string;
   id: string;
@@ -23,13 +31,7 @@ interface CustomFieldProps extends Validation {
     | "radio";
   description?: string;
   label?: string;
-  classNames?: Partial<{
-    wrapper: string;
-    input: string;
-    description: string;
-    label: string;
-    option: string;
-  }>;
+  classNames?: CustomInputClassNames;
 }
 
 export interface CustomInputProps extends CustomFieldProps {
