@@ -104,11 +104,7 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
           className="bg-gradient-to-r text-center text-xl text-white py-10 hedera-primary font-medium flex items-center justify-evenly cursor-pointer"
           onClick={() => setModal(true)}
         >
-          <p>
-            Nulla veniam irure commodo duis
-            <br />
-            officia aliquip irure ea nostrud.
-          </p>
+          <p>Add a new expense!</p>
 
           <svg
             stroke="currentColor"
