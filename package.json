@@ -17,6 +17,7 @@
   "scripts": {
     "build": "ts-node blockchain/src/index.ts",
     "deploy": "ts-node blockchain/src/build.ts",
+    "build:api": "cd api && yarn",
     "solchelp": "solcjs --help"
   },
   "devDependencies": {
