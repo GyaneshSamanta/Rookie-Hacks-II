@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Form, Formik } from "formik";
 
 import { ParseAssociationID } from "../../utils/functions";
@@ -7,19 +7,20 @@ import { Input, Modal } from "../shared";
 
 const DashboardCard: React.FC<DashboardCardProps> = ({ association }) => {
   const [modal, setModal] = useState<boolean>(false);
+  const [amount, setAmount] = useState<number>(0);
 
   const [transactions] = Object.values(association);
   const [association_id] = Object.keys(association);
 
   const usernames = useMemo(() => ParseAssociationID(association_id), []);
 
-  const amount = useMemo(() => {
+  useEffect(() => {
     var amountSum: number = 0;
     transactions.forEach((transaction) => {
       amountSum += transaction.amount;
     });
-    return amountSum;
-  }, []);
+    setAmount(amountSum);
+  });
 
   const deleteTransactionHandler = (
     association_id: string,

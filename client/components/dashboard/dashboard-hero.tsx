@@ -1,13 +1,22 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { nanoid } from "nanoid";
 
-import { DashboardHeroProps } from "../../utils/interfaces/dashboard-interfaces";
+import {
+  AssociationType,
+  DashboardHeroProps,
+} from "../../utils/interfaces/dashboard-interfaces";
 import { DashboardCard } from ".";
 import { Form, Formik } from "formik";
 import { Input, Modal } from "../shared";
 import { ROUTES } from "../../utils/constants/shared-constants";
+import { AddTransactionKeys } from "../../utils/constants/dashboard-constants";
 
-const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
+const DashboardHero: React.FC<DashboardHeroProps> = ({
+  associations: initialAssociations,
+}) => {
+  const [associations, setAssociations] =
+    useState<AssociationType[]>(initialAssociations);
   const [modal, setModal] = useState<boolean>(false);
   const [username, setUsername] = useState<string>();
 
@@ -22,6 +31,19 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
     setUsername(sessionStorage.getItem("username") ?? "");
   }, []);
 
+  const addTransactionHandler = async (
+    values: Record<AddTransactionKeys, string | number>
+  ) => {
+    const _associations = [...associations];
+    Object.values(_associations[0])[0].push({
+      trans_ID: nanoid(6),
+      name: values[AddTransactionKeys.TRANSACTION_NAME] as string,
+      amount: values[AddTransactionKeys.TRANSACTION_AMOUNT] as number,
+    });
+    setAssociations(_associations);
+    setModal(false);
+  };
+
   return (
     <>
       {modal && (
@@ -32,11 +54,12 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
           }
         >
           <Formik
-            onSubmit={(values) => {
-              console.log(values);
-              setModal(false);
+            onSubmit={addTransactionHandler}
+            initialValues={{
+              [AddTransactionKeys.USERNAME]: "",
+              [AddTransactionKeys.TRANSACTION_AMOUNT]: 0,
+              [AddTransactionKeys.TRANSACTION_NAME]: "",
             }}
-            initialValues={{}}
           >
             {() => (
               <Form className="p-4">
@@ -46,8 +69,8 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
 
                 <div className="grid grid-cols-1 gap-y-2 items-center justify-between">
                   <Input
-                    id="transaction_name"
-                    name="transaction_name"
+                    id={AddTransactionKeys.USERNAME}
+                    name={AddTransactionKeys.USERNAME}
                     type="text"
                     placeholder="Username"
                     classNames={{
@@ -57,8 +80,8 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
                     }}
                   />
                   <Input
-                    id="transaction_name"
-                    name="transaction_name"
+                    id={AddTransactionKeys.TRANSACTION_NAME}
+                    name={AddTransactionKeys.TRANSACTION_NAME}
                     type="text"
                     placeholder="Transaction Name"
                     classNames={{
@@ -68,8 +91,8 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
                     }}
                   />
                   <Input
-                    id="transaction_amount"
-                    name="transaction_amount"
+                    id={AddTransactionKeys.TRANSACTION_AMOUNT}
+                    name={AddTransactionKeys.TRANSACTION_AMOUNT}
                     type="number"
                     placeholder="Transaction Amount"
                     classNames={{
