@@ -19,7 +19,7 @@ contract Splitwise{
           addToUsers(debtor);
           balance_logs.push(amount);
       }
-      function addToUsers(address add) private{
+      function addToUsers(address add) public{
           for (uint i = 0; i < users.length; i++){
             if (users[i] == add)
                 return;
