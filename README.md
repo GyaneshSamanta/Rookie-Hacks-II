@@ -18,9 +18,9 @@ We were working on solidity and smart contracts for the first time for this hack
 1. Hedera
 2. Solidity
 3. Smart Contracts
-4. Next.js
+4. Next.js (Typescript)
 5. Tailwind CSS
-6. Node.js
+6. Node.js (Typescript)
 
 ## Challenges we ran into 🏃‍♂️
 
