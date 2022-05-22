@@ -6,6 +6,7 @@ import {
   Hbar,
   ContractCallQuery,
   ContractFunctionParameters,
+  ContractExecuteTransaction,
 } from "@hashgraph/sdk";
 
 import { DatabaseService } from "../services/database.service";
@@ -28,17 +29,37 @@ export const registerUser = async (username: string, password: string) => {
     .setKey(newKey.publicKey)
     .execute(hederaClient);
   const receipt = await createTxn.getReceipt(hederaClient);
-  const contractCallTxn = new ContractCallQuery()
+  const contractCallTxn = await new ContractExecuteTransaction()
     .setContractId(process.env.CONTRACT_ID!)
-    .setGas(100000)
+    .setGas(5000000)
     .setFunction(
       "addToUsers",
       new ContractFunctionParameters().addAddress(
         receipt.accountId!.toSolidityAddress()
       )
     )
-    .setMaxQueryPayment(new Hbar(1));
-  const contractCallSubmit = await contractCallTxn.execute(hederaClient);
+    .setMaxTransactionFee(new Hbar(100000))
+    .execute(hederaClient);
+  console.log(
+    "addToUsers() receipt:\n%o",
+    JSON.stringify(await contractCallTxn.getReceipt(hederaClient))
+  );
+  // try {
+  //   const contractQueryTxn = await new ContractCallQuery()
+  //     .setContractId(process.env.CONTRACT_ID!)
+  //     .setGas(50000000)
+  //     .setFunction("getUsers")
+  //     .setMaxQueryPayment(new Hbar(1))
+  //     .setMaxAttempts(5)
+  //     .execute(hederaClient);
+  //   const contractQueryResult = contractQueryTxn.asBytes();
+  //   console.log(
+  //     "getUsers() receipt: \n%o",
+  //     JSON.stringify(await contractQueryResult)
+  //   );
+  // } catch (err) {
+  //   console.error(err);
+  // }
 
   const hashedPassword = await hash(password, 12);
   await db.insertOne({
