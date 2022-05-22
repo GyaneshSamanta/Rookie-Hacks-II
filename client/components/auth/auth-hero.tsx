@@ -72,7 +72,12 @@ const AuthHero: React.FC<HomePageProps> = ({ isLogin }) => {
           {({}) => (
             <Form className="rounded shadow-2xl p-4 flex flex-col gap-y-6 bg-white">
               <h2 className="text-center text-2xl font-bold my-4">
-                Welcome to [APP]
+                Welcome to
+                <img
+                  src="/brand.png"
+                  alt="Contracts"
+                  className="w-40 mx-auto"
+                />
               </h2>
               <Input
                 id={AUTH_KEYS.USERNAME}
