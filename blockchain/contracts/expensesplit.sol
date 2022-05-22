@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-contract Splitwise{
+contract Maruti800{
       mapping(address => mapping (address => int32)) public debts;
       address[] public users;
       int[] balance_logs;
