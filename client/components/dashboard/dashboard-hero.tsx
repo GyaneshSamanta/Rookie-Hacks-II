@@ -1,12 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import { DashboardHeroProps } from "../../utils/interfaces/dashboard-interfaces";
 import { DashboardCard } from ".";
 import { Form, Formik } from "formik";
 import { Input, Modal } from "../shared";
+import { ROUTES } from "../../utils/constants/shared-constants";
 
 const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
   const [modal, setModal] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>();
+
+  const { replace } = useRouter();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      alert("Kindly login!");
+      replace(ROUTES.LOGIN);
+    }
+    setUsername(sessionStorage.getItem("username") ?? "");
+  }, []);
 
   return (
     <>
@@ -80,9 +94,9 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ associations }) => {
 
       <section>
         <div className="bg-hedera-secondary text-white py-36 px-48">
-          <h1 className="text-5xl font-bold">Welcome [name]</h1>
+          <h1 className="text-5xl font-bold">Welcome {username}</h1>
           <h6 className="text-hedera-purple text-xl font-light mt-8">
-            Lets see something
+            Lets see your balances!
           </h6>
         </div>
 

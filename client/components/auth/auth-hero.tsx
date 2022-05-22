@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Form, Formik } from "formik";
 
 import { AUTH_KEYS } from "../../utils/constants/auth-constants";
@@ -7,8 +8,11 @@ import { HomePageProps } from "../../utils/interfaces/home-interfaces";
 import { Input } from "../shared";
 import { ROUTES } from "../../utils/constants/shared-constants";
 import { CustomInputClassNames } from "../../utils/interfaces/shared-interfaces";
+import { rest } from "../../utils/services/rest";
 
 const AuthHero: React.FC<HomePageProps> = ({ isLogin }) => {
+  const { push } = useRouter();
+
   const memoisedClassNames = useMemo<CustomInputClassNames>(
     () => ({
       input: "border-b-2 focus:border-hedera-secondary transition-all",
@@ -16,26 +20,57 @@ const AuthHero: React.FC<HomePageProps> = ({ isLogin }) => {
     []
   );
 
+  const loginHandler = async (values: Record<AUTH_KEYS, string>) => {
+    try {
+      const { data } = await rest.post("/auth/login", values);
+      sessionStorage.setItem("username", values[AUTH_KEYS.USERNAME]);
+      sessionStorage.setItem("token", data.token);
+      push(ROUTES.DASHBOARD);
+    } catch ({ response }) {
+      console.log(response);
+      // @ts-ignore
+      alert(response.data.message);
+    }
+  };
+
+  const signupHandler = async (values: Record<AUTH_KEYS, string>) => {
+    try {
+      const {
+        data: { message, credentials },
+      } = await rest.post("/auth/signup", values);
+
+      alert(message);
+      var element = document.createElement("a");
+      element.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," +
+          encodeURIComponent(JSON.stringify(credentials))
+      );
+      element.setAttribute("download", "credentials.txt");
+      element.style.display = "none";
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+      push(ROUTES.LOGIN);
+    } catch ({ response }) {
+      console.log(response);
+      // @ts-ignore
+      alert(response.data.message);
+    }
+  };
+
   return (
     <section className="h-screen flex">
       <div className="w-1/2 bg-gradient-to-tr hedera-primary h-full flex justify-center items-center p-4">
-        <Formik onSubmit={(values) => console.log(values)} initialValues={{}}>
+        <Formik
+          onSubmit={isLogin ? loginHandler : signupHandler}
+          initialValues={{ [AUTH_KEYS.USERNAME]: "", [AUTH_KEYS.PASSWORD]: "" }}
+        >
           {({}) => (
             <Form className="rounded shadow-2xl p-4 flex flex-col gap-y-6 bg-white">
               <h2 className="text-center text-2xl font-bold my-4">
                 Welcome to [APP]
               </h2>
-              {!isLogin ? (
-                <Input
-                  id={AUTH_KEYS.FULL_NAME}
-                  name={AUTH_KEYS.FULL_NAME}
-                  type="text"
-                  placeholder="Full Name"
-                  classNames={memoisedClassNames}
-                />
-              ) : (
-                <></>
-              )}
               <Input
                 id={AUTH_KEYS.USERNAME}
                 name={AUTH_KEYS.USERNAME}
@@ -54,7 +89,7 @@ const AuthHero: React.FC<HomePageProps> = ({ isLogin }) => {
                 type="submit"
                 className="bg-hedera-secondary w-fit text-white px-4 py-2 rounded mx-auto mt-4"
               >
-                Submit
+                {isLogin ? "Login" : "Signup"}
               </button>
 
               <small className="text-center">
