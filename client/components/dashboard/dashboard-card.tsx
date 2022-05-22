@@ -80,7 +80,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({ association }) => {
                           <svg
                             stroke="currentColor"
                             fill="currentColor"
-                            stroke-width="0"
+                            strokeWidth="0"
                             viewBox="0 0 20 20"
                             className="w-6 text-red-500 cursor-pointer"
                             onClick={() =>
