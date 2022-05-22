@@ -1,19 +1,19 @@
 pragma solidity ^0.8.0;
 
-contract Maruti800{
-      mapping(address => mapping (address => int32)) public debts;
+contract Splitfool{
+      mapping(address => mapping (address => uint)) public debts;
       address[] public users;
       int[] balance_logs;
       int[] deletion_logs;
-      function lookup(address debtor, address creditor) public view returns (int32 ret){
+      function lookup(address debtor, address creditor) public view returns (uint ret){
           ret = debts[debtor][creditor];
       }
 
-      function add_IOU(address creditor, int32 amount) public{
+      function add_IOU(address creditor, uint amount) public{
           addDebt(msg.sender, creditor, amount);
           balance_logs.push(amount); 
       }
-      function addDebt(address debtor, address creditor , int32 amount) public{
+      function addDebt(address debtor, address creditor , uint amount) public{
           debts[debtor][creditor] += amount;
           addToUsers(creditor);
           addToUsers(debtor);
