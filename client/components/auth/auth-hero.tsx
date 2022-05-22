@@ -46,7 +46,10 @@ const AuthHero: React.FC<HomePageProps> = ({ isLogin }) => {
         "data:text/plain;charset=utf-8," +
           encodeURIComponent(JSON.stringify(credentials))
       );
-      element.setAttribute("download", "credentials.txt");
+      element.setAttribute(
+        "download",
+        `credentials@${values[AUTH_KEYS.USERNAME]}.txt`
+      );
       element.style.display = "none";
       document.body.appendChild(element);
       element.click();
