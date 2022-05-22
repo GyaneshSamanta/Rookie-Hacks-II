@@ -7,7 +7,8 @@ With expense split apps gaining more and more popularity, we aimed to design an 
 On our web-application, a user can create a account to login to our web app. Once a user is logged in, he has the option to add expense, edit expense, settle up expenses or delete transactions. All of this is stored in logs so that a user is aware of deletions or edits made to a transaction. 
 
 ## How the WebApp Looks 🤜🔥🤛
-![Front-end]()
+![Front-end](Repository-Assests/Landing%20Page.jpeg)
+![Front-end](Repository-Assests/Awesome-UI.jpeg)
 
 ## How we built it 🔧
 
@@ -27,6 +28,8 @@ We were working on solidity and smart contracts for the first time for this hack
 
 2. Integrating the front end app with the backend was difficult for us.
 
+3. We couldn't get any mentorship on hedera, and using a newly built platform with limited support got us into a lot of bugs with deployment. 
+
 ## Accomplishments that we're proud of 🏅
 1. Successfully built our first smart contract over the weekend. 
 2. Created a web-application along the theme of the hedera website. 
@@ -38,6 +41,7 @@ We were working on solidity and smart contracts for the first time for this hack
 
 ## What's next ⏭
  1. We plan to extend this to a mobile application for easier access. 
+ 2. To store logs of every edit that is made to the transaction so as to give the user clear visibility. 
 
 ## Collaborators 🤖
 
@@ -45,8 +49,8 @@ Only People with broken fingers due to membrane keyboards.
 | Name      | GitHub Profile     |
 | :------------- | :----------: |
 |  Gyanesh Samanta   | [GitHub](https://www.github.com/gyanesh-samanta-123) |
-|  Gita Alekhya Paul   | [GitHub]() |
-|  Yashvardhan Jagnani   | [GitHub]() |
+|  Gita Alekhya Paul   | [GitHub](https://github.com/gitaalekhyapaul) |
+|  Yashvardhan Jagnani   | [GitHub](https://github.com/jagnani73) |
 
 
 
