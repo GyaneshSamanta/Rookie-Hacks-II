@@ -1,58 +1,104 @@
-![Rookie-Hacks-II](Repository-Assests/Cover.png) 
+# Splitr — A Blockchain Expense-Split Web App
 
-## Inspiration💡
-With expense split apps gaining more and more popularity, we aimed to design an expense split web application that would use blockchain to store the data instead of centralised database.  
+> **Splitwise meets Hedera. Built in 36 hours at Rookie Hacks II — first smart contract, first deployment, first weekend on Solidity.**
 
-## What it does 🧭
-On our web-application, a user can create a account to login to our web app. Once a user is logged in, he has the option to add expense, edit expense, settle up expenses or delete transactions. All of this is stored in logs so that a user is aware of deletions or edits made to a transaction. 
+![Cover](Repository-Assests/Cover.png)
 
-## How the WebApp Looks 🤜🔥🤛
-![Logo](Repository-Assests/Logo.png)
-![Front-end](Repository-Assests/Landing%20Page.jpeg)
-![Front-end](Repository-Assests/Awesome-UI.jpeg)
+![Hackathon](https://img.shields.io/badge/hackathon-Rookie%20Hacks%20II-purple) ![Chain](https://img.shields.io/badge/blockchain-Hedera-9b51e0) ![Stack](https://img.shields.io/badge/stack-Next.js%20%2B%20Solidity-black)
 
-## How we built it 🔧
+---
 
-We were working on solidity and smart contracts for the first time for this hackathon. On the blockchain side, the creation of expenses (credit/debit) ; editing and deletion is handled. This was built using solidity. The smart contract is deployed on hedera (which we used for the first time as well). On the front end side of things, we built the web app using next.js and tailwind css. 
+## About
 
-## Tech Stack 🔨
-1. Hedera
-2. Solidity
-3. Smart Contracts
-4. Next.js (Typescript)
-5. Tailwind CSS
-6. Node.js (Typescript)
+**Who:** A 3-person team — Gyanesh Samanta, Gita Alekhya Paul, and Yashvardhan Jagnani.
+**What:** A Splitwise-style expense splitting web app that records every transaction (and every edit) on a Hedera-deployed Solidity smart contract instead of a centralized database.
+**When:** Built over 36 hours at the **Rookie Hacks II** hackathon (May 2022).
+**Where:** Web app — Next.js frontend, Node.js API, smart contract on **Hedera Hashgraph**.
+**Why:** Centralized expense apps own your transaction history. We wanted that ledger to live on-chain — auditable, tamper-evident, and yours.
 
-## Challenges we ran into 🏃‍♂️
+## The Story
 
-1. Learning about solidity and building a smart contract over the duration of the hackathon was really challenging as none of us had used it before.
+We picked the hardest stack we'd never touched. None of the three of us had written Solidity before. None of us had deployed to Hedera. We had a weekend.
 
-2. Integrating the front end app with the backend was difficult for us.
+Friday night the contract didn't compile. Saturday morning we figured out `solc` versions. Saturday night the deploy script broke at 2 AM with no Hedera mentor on Discord. Sunday by noon we were calling the contract from a Next.js + Tailwind frontend and logging credits, debits, edits, and deletes — every state change committed on-chain.
 
-3. We couldn't get any mentorship on hedera, and using a newly built platform with limited support got us into a lot of bugs with deployment. 
+What shipped:
 
-## Accomplishments that we're proud of 🏅
-1. Successfully built our first smart contract over the weekend. 
-2. Created a web-application along the theme of the hedera website. 
+- **Solidity smart contract** handling expense create / edit / delete / settle
+- **Hedera deployment pipeline** (custom build + deploy scripts in `blockchain/`)
+- **Next.js + TypeScript + Tailwind** frontend (`client/`) themed to match Hedera's brand
+- **Node.js + TypeScript API** (`api/`) bridging the frontend to the contract
+- **Audit log** so users can see every edit/deletion ever made to a transaction
 
-## What we learned 🧠
-1. Solidity language
-2. Smart contracts
-3. Javascript
+We didn't win first — but we walked out with our first deployed smart contract.
 
-## What's next ⏭
- 1. We plan to extend this to a mobile application for easier access. 
- 2. To store logs of every edit that is made to the transaction so as to give the user clear visibility. 
+## Gallery
 
-## Collaborators 🤖
+| Logo | Landing | UI |
+|---|---|---|
+| ![Logo](Repository-Assests/Logo.png) | ![Landing](Repository-Assests/Landing%20Page.jpeg) | ![UI](Repository-Assests/Awesome-UI.jpeg) |
 
-Only People with broken fingers due to membrane keyboards. 
-| Name      | GitHub Profile     |
-| :------------- | :----------: |
-|  Gyanesh Samanta   | [GitHub](https://www.github.com/gyanesh-samanta-123) |
-|  Gita Alekhya Paul   | [GitHub](https://github.com/gitaalekhyapaul) |
-|  Yashvardhan Jagnani   | [GitHub](https://github.com/jagnani73) |
+---
 
+## Tech Stack
 
+- **Hedera Hashgraph** — smart-contract host network
+- **Solidity 0.8** — contract language
+- **`@hashgraph/sdk`** + **`solc`** — build & deploy
+- **Next.js (TypeScript)** + **Tailwind CSS** — frontend
+- **Node.js (TypeScript)** — backend API
+- **ts-node**, **inquirer**, **dotenv** — tooling
 
+## Repo Structure
 
+```
+Rookie-Hacks-II/
+├── blockchain/        # Solidity contracts + Hedera deploy scripts
+│   ├── contracts/
+│   ├── src/           # build.ts, index.ts
+│   └── build/
+├── api/               # Node.js + TypeScript API
+├── client/            # Next.js + Tailwind frontend
+├── Repository-Assests/
+├── .env.example
+└── package.json
+```
+
+## Getting Started
+
+```bash
+git clone https://github.com/GyaneshSamanta/Rookie-Hacks-II.git
+cd Rookie-Hacks-II
+yarn install
+cp .env.example .env   # fill in Hedera account ID + private key
+
+# Compile + deploy contract to Hedera
+yarn build
+yarn deploy
+
+# Run the API
+yarn build:api && cd api && yarn start
+
+# Run the frontend
+cd ../client && yarn install && yarn dev
+```
+
+Visit `http://localhost:3000`.
+
+## Contributing
+
+Hackathon code — but PRs welcome, especially for: a mobile client, fuller edit-history UI, and gas optimization on the contract.
+
+## License
+
+MIT — see [`package.json`](./package.json).
+
+## Credits
+
+| Name | GitHub |
+|---|---|
+| Gyanesh Samanta | [@GyaneshSamanta](https://github.com/GyaneshSamanta) |
+| Gita Alekhya Paul | [@gitaalekhyapaul](https://github.com/gitaalekhyapaul) |
+| Yashvardhan Jagnani | [@jagnani73](https://github.com/jagnani73) |
+
+Built at **Rookie Hacks II** (2022).
